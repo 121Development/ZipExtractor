@@ -8,19 +8,19 @@ from pathlib import Path
 
 
 # https://stackoverflow.com/questions/8844781/get-file-list-of-files-contained-in-a-zip-file
-latestzip = input("Mata in namnet på senaste zipfilen i mappen: ")
+latestzip = input("Enter name of first zip-file, including .zip: ")
 latestzip = zipfile.ZipFile(latestzip)
 n = 0
 while True:
     nameofzipinsidelatestzip = latestzip.namelist()
     pw = str(nameofzipinsidelatestzip[0])[:4]
-    print(f'lösen för {latestzip} är: {pw}')
+    print(f'Password for {latestzip} is: {pw}')
     with zipfile.ZipFile(latestzip.filename) as file:
             file.extractall(pwd=bytes(pw, 'utf-8'))
     n += 1
     # break if filename starts with flag
     if pw == "flag":
-        print(f"Extraherade {n} ZIP-filer")
+        print(f"Extracted {n} ZIP files")
         break
     # Get latest file from folder
     files_path = os.path.join(os.getcwd(), '*')
