@@ -10,6 +10,7 @@ from pathlib import Path
 # https://stackoverflow.com/questions/8844781/get-file-list-of-files-contained-in-a-zip-file
 latestzip = input("Enter name of first zip-file, including .zip: ")
 latestzip = zipfile.ZipFile(latestzip)
+
 n = 0
 while True:
     nameofzipinsidelatestzip = latestzip.namelist()
